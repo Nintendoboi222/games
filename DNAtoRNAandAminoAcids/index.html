@@ -9,163 +9,563 @@
     <link rel="icon" type="image/x-icon" href="https://nintendoboi22.github.io/favicon.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             background-color: #1a1a1a;
             font-family: 'Oxanium', sans-serif;
             text-align: center;
             color: white; 
-            font-size: 1.2em; 
+            font-size: 1.2em;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+        }
+
+        .input-section {
+            background-color: #2a2a2a;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        #dna-sequence {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            font-family: 'Courier New', monospace;
+            background-color: #1a1a1a;
+            color: white;
+            border: 2px solid #5E5DF0;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-transform: uppercase;
         }
 
         .cool-button {
             background: #5E5DF0;
             border-radius: 999px;
             box-shadow: #5E5DF0 0 10px 20px -10px;
-            box-sizing: border-box;
             color: #FFFFFF;
             cursor: pointer;
-            font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: 'Oxanium', sans-serif;
             font-size: 16px;
             font-weight: 700;
             line-height: 24px;
-            opacity: 1;
-            outline: 0 solid transparent;
-            padding: 8px 18px;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-            width: fit-content;
-            word-break: break-word;
+            padding: 12px 30px;
             border: 0;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
         }
 
-        .results {
-            width: 50%;
-            margin: 20px auto;
-            padding: 10px;
-            border: 1px solid #fff;
-            border-radius: 5px;
-            background-color: #333;
+        .cool-button:hover {
+            background: #4a4ad0;
+            transform: translateY(-2px);
+            box-shadow: #5E5DF0 0 15px 30px -10px;
+        }
+
+        .cool-button.secondary {
+            background: #666;
+            box-shadow: #666 0 10px 20px -10px;
+        }
+
+        .cool-button.secondary:hover {
+            background: #555;
+            box-shadow: #666 0 15px 30px -10px;
+        }
+
+        .toggle-section {
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
             text-align: left;
-            position: relative;
-            height: 300px;
-            overflow: hidden;
         }
 
-        .draggable {
-            cursor: move;
-            background-color: #444;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
+        .toggle-section h3 {
+            margin-top: 0;
+            color: #5E5DF0;
+        }
+
+        .toggle-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .toggle-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 26px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
             position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #444;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #5E5DF0;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+
+        .results-container {
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .result-box {
+            background-color: #1a1a1a;
+            border: 2px solid #444;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        .result-box.hidden {
+            display: none;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #444;
+        }
+
+        .result-title {
+            font-size: 1.3em;
+            color: #5E5DF0;
+            font-weight: 700;
+        }
+
+        .copy-btn {
+            background: #444;
+            border: none;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Oxanium', sans-serif;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #555;
+        }
+
+        .copy-btn.copied {
+            background: #4a4;
+        }
+
+        .result-content {
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.8;
+            word-break: break-all;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: #0a0a0a;
+            border-radius: 5px;
+        }
+
+        .result-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .result-content::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 5px;
+        }
+
+        .result-content::-webkit-scrollbar-thumb {
+            background: #5E5DF0;
+            border-radius: 5px;
+        }
+
+        .codon-view {
+            display: inline-block;
+            margin: 2px;
+            padding: 4px 6px;
+            background-color: #333;
+            border-radius: 4px;
+            border-left: 3px solid #5E5DF0;
+        }
+
+        .amino-acid {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 6px;
+            font-size: 0.9em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .stop-codon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .stats-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-item {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #5E5DF0;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 0.85em;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #5E5DF0;
+        }
+
+        .error-message {
+            background-color: #ff4444;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background-color: #2a4a6a;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 1em;
+                padding: 10px;
+            }
+
+            .toggle-group {
+                flex-direction: column;
+            }
+
+            .stats-box {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-<body><br><br><br><br><br><br><br><br><br>
-    <h1>DNA Converter</h1>
-    <form id="dna-form">
-        <label for="dna-sequence">Enter DNA sequence:</label>
-        <input type="text" id="dna-sequence" name="dna-sequence">
-       <br><br> <button type="submit" class="cool-button">Convert</button>
-    </form>
-    <div id="results-container"></div>
+<body>
+    <div class="container">
+        <h1>🧬 DNA Converter</h1>
+        <p class="subtitle">Convert DNA sequences to mRNA, tRNA, and amino acids</p>
+
+        <div class="input-section">
+            <label for="dna-sequence"><strong>Enter DNA Sequence:</strong></label>
+            <textarea id="dna-sequence" rows="4" placeholder="Enter DNA sequence (A, T, C, G only)&#10;Example: ATGCGATACGCTTGA"></textarea>
+            <div>
+                <button onclick="convertDNA()" class="cool-button">Convert</button>
+                <button onclick="clearAll()" class="cool-button secondary">Clear</button>
+            </div>
+        </div>
+
+        <div class="toggle-section">
+            <h3>Display Options</h3>
+            <div class="toggle-group">
+                <div class="toggle-item">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="toggle-mrna" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <label for="toggle-mrna">Show mRNA</label>
+                </div>
+                <div class="toggle-item">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="toggle-trna" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <label for="toggle-trna">Show tRNA</label>
+                </div>
+                <div class="toggle-item">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="toggle-amino" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <label for="toggle-amino">Show Amino Acids</label>
+                </div>
+                <div class="toggle-item">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="toggle-codons">
+                        <span class="slider"></span>
+                    </label>
+                    <label for="toggle-codons">Group by Codons</label>
+                </div>
+                <div class="toggle-item">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="toggle-stats" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <label for="toggle-stats">Show Statistics</label>
+                </div>
+            </div>
+        </div>
+
+        <div id="results-container"></div>
+    </div>
+
     <script>
-    document.getElementById("dna-form").addEventListener("submit", function(event) {
-        event.preventDefault();
-        const inputDNA = document.getElementById("dna-sequence").value.toUpperCase();
-        const validNucleotides = new Set(["A", "T", "C", "G"]);
+        const codonTable = {
+            'AUG': 'M (Methionine - Start)', 'UUU': 'F (Phenylalanine)', 'UUC': 'F (Phenylalanine)',
+            'UUA': 'L (Leucine)', 'UUG': 'L (Leucine)', 'UCU': 'S (Serine)', 'UCC': 'S (Serine)',
+            'UCA': 'S (Serine)', 'UCG': 'S (Serine)', 'UAU': 'Y (Tyrosine)', 'UAC': 'Y (Tyrosine)',
+            'UGU': 'C (Cysteine)', 'UGC': 'C (Cysteine)', 'UGG': 'W (Tryptophan)', 'UAA': 'STOP (Stop Codon)',
+            'UAG': 'STOP (Stop Codon)', 'UGA': 'STOP (Stop Codon)', 'CUU': 'L (Leucine)', 'CUC': 'L (Leucine)',
+            'CUA': 'L (Leucine)', 'CUG': 'L (Leucine)', 'CCU': 'P (Proline)', 'CCC': 'P (Proline)',
+            'CCA': 'P (Proline)', 'CCG': 'P (Proline)', 'CAU': 'H (Histidine)', 'CAC': 'H (Histidine)',
+            'CAA': 'Q (Glutamine)', 'CAG': 'Q (Glutamine)', 'CGU': 'R (Arginine)', 'CGC': 'R (Arginine)',
+            'CGA': 'R (Arginine)', 'CGG': 'R (Arginine)', 'AUU': 'I (Isoleucine)', 'AUC': 'I (Isoleucine)',
+            'AUA': 'I (Isoleucine)', 'ACU': 'T (Threonine)', 'ACC': 'T (Threonine)', 'ACA': 'T (Threonine)',
+            'ACG': 'T (Threonine)', 'AAU': 'N (Asparagine)', 'AAC': 'N (Asparagine)', 'AAA': 'K (Lysine)',
+            'AAG': 'K (Lysine)', 'AGU': 'S (Serine)', 'AGC': 'S (Serine)', 'AGA': 'R (Arginine)',
+            'AGG': 'R (Arginine)', 'GUU': 'V (Valine)', 'GUC': 'V (Valine)', 'GUA': 'V (Valine)',
+            'GUG': 'V (Valine)', 'GCU': 'A (Alanine)', 'GCC': 'A (Alanine)', 'GCA': 'A (Alanine)',
+            'GCG': 'A (Alanine)', 'GAU': 'D (Aspartic Acid)', 'GAC': 'D (Aspartic Acid)', 'GAA': 'E (Glutamic Acid)',
+            'GAG': 'E (Glutamic Acid)', 'GGU': 'G (Glycine)', 'GGC': 'G (Glycine)', 'GGA': 'G (Glycine)',
+            'GGG': 'G (Glycine)'
+        };
 
         function dnaToMrna(dna) {
             const translation = { 'A': 'U', 'T': 'A', 'C': 'G', 'G': 'C' };
-            return dna.split('').map(nucleotide => translation[nucleotide]).join('');
+            return dna.split('').map(nucleotide => translation[nucleotide] || '?').join('');
+        }
+
+        function mrnaToTrna(mrna) {
+            const translation = { 'A': 'U', 'U': 'A', 'C': 'G', 'G': 'C' };
+            return mrna.split('').map(nucleotide => translation[nucleotide] || '?').join('');
         }
 
         function mrnaToAminoAcids(mrna) {
-            const codonTable = {
-                'AUG': 'M (Methionine - Start)', 'UUU': 'F (Phenylalanine)', 'UUC': 'F (Phenylalanine)',
-                'UUA': 'L (Leucine)', 'UUG': 'L (Leucine)', 'UCU': 'S (Serine)', 'UCC': 'S (Serine)',
-                'UCA': 'S (Serine)', 'UCG': 'S (Serine)', 'UAU': 'Y (Tyrosine)', 'UAC': 'Y (Tyrosine)',
-                'UGU': 'C (Cysteine)', 'UGC': 'C (Cysteine)', 'UGG': 'W (Tryptophan)', 'UAA': 'STOP (Stop Codon)',
-                'UAG': 'STOP (Stop Codon)', 'UGA': 'STOP (Stop Codon)', 'CUU': 'L (Leucine)', 'CUC': 'L (Leucine)',
-                'CUA': 'L (Leucine)', 'CUG': 'L (Leucine)', 'CCU': 'P (Proline)', 'CCC': 'P (Proline)',
-                'CCA': 'P (Proline)', 'CCG': 'P (Proline)', 'CAU': 'H (Histidine)', 'CAC': 'H (Histidine)',
-                'CAA': 'Q (Glutamine)', 'CAG': 'Q (Glutamine)', 'CGU': 'R (Arginine)', 'CGC': 'R (Arginine)',
-                'CGA': 'R (Arginine)', 'CGG': 'R (Arginine)', 'AUU': 'I (Isoleucine)', 'AUC': 'I (Isoleucine)',
-                'AUA': 'I (Isoleucine)', 'ACU': 'T (Threonine)', 'ACC': 'T (Threonine)', 'ACA': 'T (Threonine)',
-                'ACG': 'T (Threonine)', 'AAU': 'N (Asparagine)', 'AAC': 'N (Asparagine)', 'AAA': 'K (Lysine)',
-                'AAG': 'K (Lysine)', 'AGU': 'S (Serine)', 'AGC': 'S (Serine)', 'AGA': 'R (Arginine)',
-                'AGG': 'R (Arginine)', 'GUU': 'V (Valine)', 'GUC': 'V (Valine)', 'GUA': 'V (Valine)',
-                'GUG': 'V (Valine)', 'GCU': 'A (Alanine)', 'GCC': 'A (Alanine)', 'GCA': 'A (Alanine)',
-                'GCG': 'A (Alanine)', 'GAU': 'D (Aspartic Acid)', 'GAC': 'D (Aspartic Acid)', 'GAA': 'E (Glutamic Acid)',
-                'GAG': 'E (Glutamic Acid)', 'GGU': 'G (Glycine)', 'GGC': 'G (Glycine)', 'GGA': 'G (Glycine)',
-                'GGG': 'G (Glycine)'
-                };
-
             const aminoAcids = [];
             for (let i = 0; i < mrna.length; i += 3) {
                 const codon = mrna.substring(i, i + 3);
-                if (codon in codonTable) {
-                    const aminoAcid = codonTable[codon];
-                    if (aminoAcid === 'STOP') {
-                        aminoAcids.push(aminoAcid);
-                        continue;
-                    }
-                    aminoAcids.push(aminoAcid);
+                if (codon.length === 3 && codon in codonTable) {
+                    aminoAcids.push({
+                        codon: codon,
+                        aminoAcid: codonTable[codon],
+                        isStop: codonTable[codon].startsWith('STOP')
+                    });
                 }
             }
             return aminoAcids;
         }
 
-        function mrnaToTrna(mrna) {
-            const translation = { 'A': 'U', 'U': 'A', 'C': 'G', 'G': 'C' };
-            return mrna.split('').map(nucleotide => translation[nucleotide]).join('');
+        function formatWithCodons(sequence) {
+            let formatted = '';
+            for (let i = 0; i < sequence.length; i += 3) {
+                const codon = sequence.substring(i, i + 3);
+                formatted += `<span class="codon-view">${codon}</span>`;
+            }
+            return formatted;
         }
 
-        if ([...inputDNA].every(nucleotide => validNucleotides.has(nucleotide))) {
+        function copyToClipboard(text, btnId) {
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById(btnId);
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function convertDNA() {
+            const inputDNA = document.getElementById('dna-sequence').value.toUpperCase().replace(/\s/g, '');
+            const validNucleotides = new Set(['A', 'T', 'C', 'G']);
+            const resultsContainer = document.getElementById('results-container');
+
+            if (!inputDNA) {
+                resultsContainer.innerHTML = '<div class="error-message">⚠️ Please enter a DNA sequence.</div>';
+                return;
+            }
+
+            const invalidChars = [...inputDNA].filter(n => !validNucleotides.has(n));
+            if (invalidChars.length > 0) {
+                resultsContainer.innerHTML = `<div class="error-message">⚠️ Invalid DNA sequence. Found invalid characters: ${[...new Set(invalidChars)].join(', ')}<br>Only A, T, C, G are allowed.</div>`;
+                return;
+            }
+
             const mrna = dnaToMrna(inputDNA);
-            const aminoAcids = mrnaToAminoAcids(mrna);
             const trna = mrnaToTrna(mrna);
-            const resultHTML = `
-                <div class="results">
-                    <div class="draggable" draggable="true" id="mrna" style="top: 10px; left: 10px;"><strong>mRNA: ${mrna}</strong></div>
-                    <div class="draggable" draggable="true" id="amino" style="top: 60px; left: 10px;"><strong>Amino Acids: ${aminoAcids.join(", ")}</strong></div>
-                    <div class="draggable" draggable="true" id="trna" style="top: 110px; left: 10px;"><strong>tRNA: ${trna}</strong></div>
-                </div>
-            `;
-            document.getElementById("results-container").innerHTML = resultHTML;
-            makeDraggable();
-        } else {
-            document.getElementById("results-container").innerHTML = "Invalid DNA sequence.";
-        }
-    });
+            const aminoAcids = mrnaToAminoAcids(mrna);
 
-    function makeDraggable() {
-        const draggables = document.querySelectorAll('.draggable');
-        const container = document.querySelector('.results');
-        
-        draggables.forEach(draggable => {
-            draggable.addEventListener('dragstart', (event) => {
-                event.dataTransfer.setData('text/plain', null);
-                const style = window.getComputedStyle(event.target, null);
-                event.dataTransfer.setData('text/plain', (parseInt(style.getPropertyValue('left'), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue('top'), 10) - event.clientY));
+            const showMrna = document.getElementById('toggle-mrna').checked;
+            const showTrna = document.getElementById('toggle-trna').checked;
+            const showAmino = document.getElementById('toggle-amino').checked;
+            const groupCodons = document.getElementById('toggle-codons').checked;
+            const showStats = document.getElementById('toggle-stats').checked;
+
+            let html = '<div class="results-container">';
+
+            if (showStats) {
+                html += `
+                    <div class="stats-box">
+                        <div class="stat-item">
+                            <div class="stat-label">DNA Length</div>
+                            <div class="stat-value">${inputDNA.length}</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Codons</div>
+                            <div class="stat-value">${Math.floor(mrna.length / 3)}</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Amino Acids</div>
+                            <div class="stat-value">${aminoAcids.length}</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">GC Content</div>
+                            <div class="stat-value">${((([...inputDNA].filter(n => n === 'G' || n === 'C').length) / inputDNA.length) * 100).toFixed(1)}%</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (showMrna) {
+                const mrnaContent = groupCodons ? formatWithCodons(mrna) : mrna;
+                html += `
+                    <div class="result-box">
+                        <div class="result-header">
+                            <div class="result-title">mRNA (Messenger RNA)</div>
+                            <button class="copy-btn" id="copy-mrna" onclick="copyToClipboard('${mrna}', 'copy-mrna')">Copy</button>
+                        </div>
+                        <div class="result-content">${mrnaContent}</div>
+                    </div>
+                `;
+            }
+
+            if (showTrna) {
+                const trnaContent = groupCodons ? formatWithCodons(trna) : trna;
+                html += `
+                    <div class="result-box">
+                        <div class="result-header">
+                            <div class="result-title">tRNA (Transfer RNA Anticodons)</div>
+                            <button class="copy-btn" id="copy-trna" onclick="copyToClipboard('${trna}', 'copy-trna')">Copy</button>
+                        </div>
+                        <div class="result-content">${trnaContent}</div>
+                    </div>
+                `;
+            }
+
+            if (showAmino) {
+                const aminoContent = aminoAcids.map(aa => 
+                    `<span class="amino-acid ${aa.isStop ? 'stop-codon' : ''}">${aa.codon} → ${aa.aminoAcid}</span>`
+                ).join(' ');
+                const aminoText = aminoAcids.map(aa => aa.aminoAcid).join(', ');
+                html += `
+                    <div class="result-box">
+                        <div class="result-header">
+                            <div class="result-title">Amino Acids</div>
+                            <button class="copy-btn" id="copy-amino" onclick="copyToClipboard('${aminoText}', 'copy-amino')">Copy</button>
+                        </div>
+                        <div class="result-content">${aminoContent}</div>
+                    </div>
+                `;
+            }
+
+            html += '</div>';
+            resultsContainer.innerHTML = html;
+        }
+
+        function clearAll() {
+            document.getElementById('dna-sequence').value = '';
+            document.getElementById('results-container').innerHTML = '';
+        }
+
+        document.getElementById('dna-sequence').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                convertDNA();
+            }
+        });
+
+        const toggles = document.querySelectorAll('.toggle-switch input');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('change', () => {
+                if (document.getElementById('dna-sequence').value) {
+                    convertDNA();
+                }
             });
         });
-
-        container.addEventListener('dragover', (event) => {
-            event.preventDefault();
-            return false;
-        });
-
-        container.addEventListener('drop', (event) => {
-            const offset = event.dataTransfer.getData('text/plain').split(',');
-            const draggableElement = event.target.closest('.draggable');
-            draggableElement.style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
-            draggableElement.style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
-            event.preventDefault();
-            return false;
-        });
-    }
     </script>
 </body>
 </html>
