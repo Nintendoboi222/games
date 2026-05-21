@@ -282,6 +282,7 @@
             ],
             missile: new L(t(67), 17, 9),
             missileFire: [new L(t(68), 5, 6), new L(t(69), 5, 5)],
+            bomb: [new L(t(68), 5, 6), new L(t(69), 6, 6],
             barn: new L(t(70), 100, 42, 2),
             forest: new L(t(71), 1367, 392, 1, 1),
             forest2: new L(t(72), 1367, 392, 1, 1),
@@ -404,6 +405,8 @@
                     (this.life = e.h),
                     (this.missiles = e.i),
                     (this.maxMissiles = e.i),
+                    (this.maxbombs = e.i),
+                    (this.bombs = e.i),
                     (this.ammo = 0),
                     (this.maxAmmo = 0),
                     (this.gunReloading = !1),
@@ -425,6 +428,7 @@
                         { v: Object(u.u)(15, -2), r: 3 },
                         { v: Object(u.u)(14, -5), r: 4 },
                         { v: Object(u.u)(-9, 8), r: 2.5 },
+                    
                     ]);
             }
             get player() {
@@ -434,7 +438,7 @@
                 (this._player = M), (this.team = null == M ? void 0 : M.team);
             }
             catapultPilot() {
-                (this._player = void 0), (this.thrust = 0), (this.elevator = 0), (this.sprite = N(this.color, !1));
+                (this._player = void 0), (this.thrust = 2), (this.elevator = 0), (this.sprite = N(this.color, !1));
             }
         }
     },
