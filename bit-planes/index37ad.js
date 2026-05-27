@@ -282,7 +282,8 @@
             ],
             missile: new L(t(67), 17, 9),
             missileFire: [new L(t(68), 5, 6), new L(t(69), 5, 5)],
-            bomb: [new L(t(68), 5, 6), new L(t(69), 6, 6],
+            bomb: new L(t(69), 6, 6),
+            bombDrop: [new L(t(70), 5, 3), new L(t(69), 5, 5)],
             barn: new L(t(70), 100, 42, 2),
             forest: new L(t(71), 1367, 392, 1, 1),
             forest2: new L(t(72), 1367, 392, 1, 1),
@@ -1094,6 +1095,27 @@
         }
         function o(M, j) {
             for (let t of M) t instanceof I.a ? c(t, j) : t instanceof e.a && T(t, j);
+        }
+        function r(M, j, t = !1) {
+            if (M.has(j)) {
+                if (j.bombs > 0) {
+                    j.bombs--;
+                    const i = (function (M) {
+                        const j = new e.a(M);
+                        return (
+                            j.move(Object(y.a)(M.position, Object(y.e)(M.normal, -12))),
+                            (j.angle = -45),
+                            (j.velocity = Object(y.a)(Object(y.c)(M.velocity), Object(y.e)(M.normal, -20))),
+                            (j.forward = Object(y.c)(M.forward)),
+                            (j.normal = Object(y.c)(M.normal)),
+                            j
+                        );
+                    })(j);
+                    j.timeout(N.n, () => (i.justDeployed = !1)), Object(L.a)(M, i, t), M.add(i);
+                }
+                       
+                    }, 10 * N.n));
+            }
         }
         function c(M, j) {
             const t = Object(y.h)(M.velocity);
