@@ -17824,7 +17824,7 @@ var myCnf = {},
                 o = {};
             t.GoogleAnalyticsObject = "ga", t.ga = t.ga || function() {
                 (t.ga.q = t.ga.q || []).push(arguments)
-            }, t.ga.l = +e, r = n.createElement("script"), o = n.getElementsByTagName("script")[0], r.async = 1, r.src = "//www.google-analytics.com/analytics.js", o.parentNode.insertBefore(r, o), ga("create", u, {
+            }, t.ga.l = +e, r = n.createElement("script"), o = n.getElementsByTagName("script")[0], r.async = 1, ga("create", u, {
                 cookieName: "_ga",
                 userId: this.getGACookieValue()
             }), ga("require", "pageVisibilityTracker", {

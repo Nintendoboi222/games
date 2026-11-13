@@ -1,45 +1,49 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en-us">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>2 Minute Football</title>
-    <meta name="website" content="classroom6x.gitlab.io" />
-    <script>
-        window.config = {
-		loader: 'unity-2020',
-		debug: false,
-		maxRatio: 24 / 9,
-		minRatio: 9 / 24,
-
-		title: '2 Minute Football',
-		thumbnail: '418572a6bbddb5359501b93153290fba.png',
-		numScreenshots:  4 ,
-
-		unityVersion: '2021.3.14f1',
-		unityWebglBuildUrl: '',
-
-		fileSize:  24 ,
-		cachedDecompressedFileSizes: {
-			'2MFCB107BRC.loader.js':  562 ,
-			'8040057286e588f931be66cd22886153.wasm':  13957984 ,
-			'87cd288689dfd3cd9540bd281cb4628b.data':  10063447 ,
-			'c13a31396f5df9e4b84f94c68ff8e43c.js':  373617 ,
-		},
-		"metadata": {"poki_template_version":1,"background_color":"#1F1F20","code_filename":"8040057286e588f931be66cd22886153.wasm","company_name":"igamebank llc","data_filename":"87cd288689dfd3cd9540bd281cb4628b.data","decompression_fallback":"Disabled","development_player":"false","framework_filename":"c13a31396f5df9e4b84f94c68ff8e43c.js","height":"600","loader_filename":"2MFCB107BRC.loader.js","product_name":"2 Minute Football","product_version":"1.0","splash_screen_style":"Dark","unity_version":"2021.3.14f1","use_data_caching":"true","use_threads":"false","use_wasm":"true","use_webgl_1_0":"true","use_webgl_2_0":"false","width":"960"}
-	};
-    </script>
-    <!-- will be copied to the resulting head //-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2 Minute Football</title>
+  <style>
+    html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #1F1F20; }
+    #unity-canvas { width: 100%; height: 100%; display: block; background: #1F1F20; }
+    #loading { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #fff; font: 16px sans-serif; pointer-events: none; }
+  </style>
 </head>
-
-<body style="overflow:hidden;">
-    <script src="patch/master-loader.js"></script>
-    <!-- will be copied to the resulting body //-->
-    <!-- will also be copied to the resulting body //-->
-  
-
-  
+<body>
+  <canvas id="unity-canvas" tabindex="-1"></canvas>
+  <div id="loading">Loading 0%</div>
+  <script src="poki-sdk.js"></script>
+  <script>
+    // Bridge the game's Poki calls to the offline stub (same shape as Poki's own Unity loader).
+    window.initPokiBridge = function (obj) {
+      if (!window.unityGame) { setTimeout(function () { window.initPokiBridge(obj); }, 100); return; }
+      window.commercialBreak = function () {
+        PokiSDK.commercialBreak().then(function () { window.unityGame.SendMessage(obj, "commercialBreakCompleted"); });
+      };
+      window.rewardedBreak = function () {
+        PokiSDK.rewardedBreak().then(function (r) { window.unityGame.SendMessage(obj, "rewardedBreakCompleted", String(r)); });
+      };
+      window.shareableURL = function () {
+        window.unityGame.SendMessage(obj, "shareableURLResolved", location.href);
+      };
+      window.unityGame.SendMessage(obj, "ready");
+    };
+  </script>
+  <script src="Build/2MFCB107BRC.loader.js"></script>
+  <script>
+    var loading = document.getElementById("loading");
+    createUnityInstance(document.getElementById("unity-canvas"), {
+      dataUrl: "Build/87cd288689dfd3cd9540bd281cb4628b.data",
+      frameworkUrl: "Build/c13a31396f5df9e4b84f94c68ff8e43c.js",
+      codeUrl: "Build/8040057286e588f931be66cd22886153.wasm",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "igamebank llc",
+      productName: "2 Minute Football",
+      productVersion: "1.0",
+    }, function (p) { loading.textContent = "Loading " + Math.round(p * 100) + "%"; })
+      .then(function (inst) { window.unityGame = inst; loading.remove(); })
+      .catch(function (e) { loading.textContent = e; });
+  </script>
 </body>
-
 </html>

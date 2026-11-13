@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Clicker Ultimate - Changelog</title>
+    <meta property="og:type" content="game">
+    <meta property="og:url" content="https://clickerultimate.github.io">
+    <meta property="og:title" content="Clicker Ultimate">
+    <meta property="og:description" content="The Ultimate Clicker Game">
+    <meta property="og:author" content="Sam">
+    <meta name="description" content="The Ultimate Clicker Game">
+    <meta name="keywords" content="Clicker, Ultimate, clickerultimate, Idle, Browser, Game">
+    <meta name="author" content="Sam">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BASE URL <base href="url" target="_blank"> -->
+
+    <link rel="stylesheet" href="./themes.css">
+    <link rel="icon" href="./favicon.ico">
+
+    <style>
+        body {
+            overflow-y: hidden;
+            overflow-x: hidden;
+            font-size: 1.5vw;
+        }
+
+        .vrTitle {
+            height: 10vh;
+            line-height: 10vh;
+            font-size: 200%;
+            width: 100%;
+            text-align: center;
+        }
+
+        hr {
+            border-style: dotted;
+        }
+
+        .vrContent {
+            overflow-y: auto;
+            height: calc(90vh - (1em + 50px));
+            border-width: 2px;
+            border-style: solid;
+            padding: 10px;
+        }
+
+        .vrContent ul {
+            margin-block-start: 0.1em;
+            font-size: 90%;
+        }
+
+        .vrContent ul:last-child {
+            margin-bottom: 0.1em;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0.5vw;
+            height: 1vh;
+        }
+    </style>
+</head>
+
+<body class="defaultTheme hide">
+    <div class="vrTitle"> Clicker Ultimate Changelog</div>
+    <hr />
+    <div id="vrLog">
+        <!-- Insert changelog items here -->
+        <div class="vrContent">
+            <span><b>v0.2.07</b> - 12/02/2022</span>
+            <ul>
+                <li>Leaders now greet players</li>
+                <li>Added the ability to sell Workers and Buildings (by ctrl+clicking)</li>
+                <li>Fixed bug where some Leaders would not carry over across Colonies</li>
+                <li>Fixed bug where doublicking rates would silently be modified after prestige</li>
+            </ul>
+            <span><b>v0.2.06</b> - 03/20/2021</span>
+            <ul>
+                <li>Age of Revolution now shows on first playthrough as locked (for clarity)</li>
+                <li>Hired leaders now offer advices when advancing ages</li>
+                <li>Optimized how the game checks for new upgrades</li>
+                <li>Optimized how the game checks for achievements</li>
+                <li>Free worker gains no longer prevent you from unlocking "Craven"</li>
+                <li>Greatly improved "Fancy Graphics" mode</li>
+                <li>Added 3 Achievements</li>
+                <li>Small bug fix to buying advancements</li>
+                <li>Fixed lack of styling on some scrollbars</li>
+            </ul>
+            <span><b>v0.2.05</b> - 03/15/2021</span>
+            <ul>
+                <li>Added a default Tax Ceiling of 100 Gold</li>
+                <li>Added some styling for Achievements tooltip</li>
+                <li>Added 2 Achievements</li>
+                <li>Achievements now queue when multiple are unlocked at once</li>
+                <li>Fixed Autosave sometimes double-saving</li>
+                <li>Fixed load action sometimes showing import string errors</li>
+                <li>Fixed Churches not showing raw resources conversion in tooltips</li>
+                <li>Fixed unread messages counter sometimes including save messages</li>
+                <li>Tweaked "Fancy Graphics" mode</li>
+            </ul>
+            <span><b>v0.2.04</b> - 03/14/2021</span>
+            <ul>
+                <li>Added some early game Upgrades</li>
+                <li>Added 5 Achievements</li>
+                <li>Added Statistics on prestige skills and achievements</li>
+                <li>Fixed a bug where prestige would reset the achievement points</li>
+                <li>Added failsafe so the game doesn't crash when a new version is uploaded</li>
+                <li>Minor UI Changes</li>
+            </ul>
+            <span><b>v0.2.03</b> - 03/10/2021</span>
+            <ul>
+                <li>Added 13 Achievements</li>
+                <li>Now showing hidden achievements</li>
+                <li>Added "Fancy Graphics" setting</li>
+                <li>Reworked UI for Achievements menu</li>
+                <li>Fixed two minor glitches with the achievement popup</li>
+                <li>"Crimson" theme minor color change</li>
+                <li>Some browser compatibility fixes</li>
+            </ul>
+            <span><b>v0.2.02</b> - 03/09/2021</span>
+            <ul>
+                <li>Added functionality for Achievements</li>
+                <li>Implemented Achievement Points (do nothing for now)</li>
+                <li>Added several (12) Achievements. More to come.</li>
+                <li>Added a Hard Reset button</li>
+                <li>Added leader greetings</li>
+                <li>Clearer indication of prestiges in progress</li>
+                <li>Re-labeled "Empire Name" to "Realm Name" for clarity</li>
+            </ul>
+            <span><b>v0.2.01</b> - 03/07/2021</span>
+            <ul>
+                <li>Added auto-generated "Empire Name" in Statistics</li>
+                <li>Fixed minor bug when purchasing advancements</li>
+                <li>Added message when advancing ages</li>
+                <li>Added opengraph metadata to site</li>
+            </ul>
+            <span><b>v0.2.00</b> - 03/06/2021</span>
+            <ul>
+                <li>Integrated with github (now hosted on clickerultimate.github.io)</li>
+                <li>Lowered "Water Dam" upgrade requirements</li>
+                <li>Added some quality of life settings</li>
+                <li>Themes now carry over to changelog page</li>
+                <li>Added "Victory" theme</li>
+                <li>Small UI adjustments</li>
+            </ul>
+            <span><b>v0.1.11</b> - 10/03/2019</span>
+            <ul>
+                <li>Fixed bug with upgrades costing less gold every reload</li>
+                <li>Added leader messages based on leaders' preferences for advancements</li>
+                <li>Added Johannes Kepler leader</li>
+                <li>Added Leonidas leader</li>
+                <li>Added hidden advancements/upgrades</li>
+                <li>Added changelog history for v.0.1.06 and earlier</li>
+                <li>Clicks can no longer produce a value smaller than 0.01 resource progress</li>
+                <li>Changed Resolve prestige value down from 3% to 2.5%</li>
+                <li>Having workers is no longer a requirement to unlock some upgrades</li>
+            </ul>
+            <span><b>v0.1.10</b> - 09/29/2019</span>
+            <ul>
+                <li>Fixed bug with some prestige effects when starting a colony</li>
+                <li>Fixed UI bug when purchasing Research prestige</li>
+                <li>Fixed minor spacing issues when starting a colony</li>
+                <li>Added several (12) prestige skills</li>
+                <li>Added advancements for the Age of Revolution</li>
+                <li>Added logic to get free workers/buildings</li>
+                <li>Added John Hancock leader</li>
+                <li>Lowered base progress completion of Diamond by 20%</li>
+                <li>Mechanical Clicker no longer counts as clicks in Statistics</li>
+                <li>Increased base cost of Wood Stock and Stone Stock</li>
+            </ul>
+            <span><b>v0.1.09</b> - 09/27/2019</span>
+            <ul>
+                <li>Fixed resource progress resetting when buying some upgrades</li>
+                <li>Fixed UI of the changelog page</li>
+                <li>Added functionalities for Passive Bonuses (no UI yet)</li>
+                <li>Added the Age of Revolution - More advancements to come</li>
+                <li>Added shorter labels for upgrades (with full label in tooltip)</li>
+                <li>Now always showing cost of leaders in tooltip</li>
+                <li>Reduced complexity of trade & upgrade structures</li>
+                <li>Reduced overall size of the game object</li>
+                <li>Updated display of messages</li>
+                <li>Nebuchadnezzar now grants a passive bonus of +1 Stone/sec</li>
+            </ul>
+            <span><b>v0.1.08</b> - 09/23/2019</span>
+            <ul>
+                <li>Fixed bug with Mining 2 upgrade not saving correctly</li>
+                <li>Fixed UI bug when unlocking Leaders and re-loading a previous save</li>
+                <li>Fixed UI bug when importing a save with unread messages</li>
+                <li>Added "Arctic Metal" theme</li>
+                <li>Changed the whole save structure to be fully dynamic</li>
+                <li>Reduced save file size by about 30%</li>
+                <li>Reduced overall size of the game object</li>
+                <li>Hasty prestige now requires 1 level in Investment</li>
+            </ul>
+            <span><b>v0.1.07</b> - 09/17/2019</span>
+            <ul>
+                <li>Fixed bug where advancements don't affect locked resources/buildings</li>
+                <li>Fixed bought leaders un-toggling when a new leader is unlocked</li>
+                <li>Fixed Resources gathering when they're still locked</li>
+                <li>Fixed plural of "Church" in Resource tooltips</li>
+                <li>Fixed comma separation in some item costs</li>
+                <li>Added Changelog page (hi!) and started tracking change history</li>
+                <li>Added Monasticism advancement and Monk workers</li>
+                <li>Added Magellan leader</li>
+                <li>Now showing the amount of Gold that will carry over when prompted for a new colony</li>
+                <li>Upgrade Cost Reductions now apply to costs associated with Gold</li>
+            </ul>
+            <span><b>v0.1.06</b> - 09/13/2019</span>
+            <ul>
+                <li>Various bug fixes & refactoring</li>
+                <li>Added second Prestige Point upgrade in Renaissance</li>
+                <li>Added additional leaders and upgrades for subsequent colonies</li>
+                <li>Added additional prestiges and statistics</li>
+                <li>Re-organized random tips to show only when the subject of the tip was previously unlocked</li>
+                <li>Refactored some buttons/functions and the save structure</li>
+            </ul>
+            <span><b>v0.1.05</b> - 09/09/2019</span>
+            <ul>
+                <li>Re-labeled "Heroes" as "Leaders"</li>
+                <li>Helpful tips now show every 15 minutes instead of every 5 minutes</li>
+                <li>Added hidden upgrades in later colonies</li>
+                <li>Added hidden leaders in later colonies</li>
+            </ul>
+            <span><b>v0.1.04</b> - 09/07/2019</span>
+            <ul>
+                <li>Fixed tooltips for miners when getting Mining II</li>
+                <li>Added Heroes feature when starting your 3rd colony</li>
+                <li>Added several heroes</li>
+            </ul>
+            <span><b>v0.1.03</b> - 08/30/2019</span>
+            <ul>
+                <li>Fixed resource progress reset bug</li>
+                <li>Added Diamond-related upgrades</li>
+                <li>Added additional Diamond trades</li>
+            </ul>
+            <span><b>v0.1.02</b> - 08/19/2019</span>
+            <ul>
+                <li>Added a Diamond resource</li>
+                <li>Added "Indigo Rush" theme</li>
+                <li>Added several prestiges/upgrades</li>
+                <li>Reduced effect on wood progress caused by Dark Age</li>
+                <li>Boosted the effect of Engineering advancement</li>
+            </ul>
+            <span><b>v0.1.01</b> - 08/06/2019</span>
+            <ul>
+                <li>Added a Diamond resource</li>
+                <li>Added "Lightning Strike" theme</li>
+                <li>Added several prestiges/upgrades</li>
+                <li>Reduced effect on wood progress caused by Dark Age</li>
+                <li>Boosted the effect of Engineering advancement</li>
+            </ul>
+            <span><b>v0.1.0</b> - 08/04/2019</span>
+            <ul>
+                <li>Various bug fixes</li>
+                <li>Various UI bug fixes</li>
+                <li>Added Prestige skills system</li>
+                <li>Added Renaissance age</li>
+                <li>Added Colonies (& prestige resetting) logic</li>
+                <li>Added several advancements and upgrades</li>
+            </ul>
+            <span><b>v0.0.23</b> - 07/16/2019</span>
+            <ul>
+                <li>Added logic to enforce upgrade tier order</li>
+                <li>Added Economics trades</li>
+                <li>Added Farm Hand worker</li>
+                <li>Random Tips are now displayed when player finishes the tutorial</li>
+            </ul>
+            <span><b>v0.0.22</b> - 07/10/2019</span>
+            <ul>
+                <li>Added Silver resource</li>
+                <li>Added Gold</li>
+                <li>Added several Dark Age upgrades</li>
+                <li>Added several resource trades</li>
+                <li>Added Tax and Property Tax trades to collect Gold</li>
+                <li>Added version summary</li>
+            </ul>
+            <span><b>v0.0.20</b> - 07/07/2019</span>
+            <ul>
+                <li>Added Miller worker</li>
+                <li>Added Forrester worker</li>
+                <li>Added 3 themes</li>
+                <li>Added several settings</li>
+                <li>Split main styling from theme styling</li>
+            </ul>
+            <span><b>v0.0.19</b> - 07/04/2019</span>
+            <ul>
+                <li>Added Messages section</li>
+                <li>Added Statistics section</li>
+                <li>Added Grain Mill building</li>
+                <li>Added Church building</li>
+                <li>Added several advancements</li>
+                <li>Added some settings</li>
+                <li>Modified Dark Age effects to be less severe</li>
+            </ul>
+            <span><b>v0.0.18</b> - 07/03/2019</span>
+            <ul>
+                <li>Added Advancements system</li>
+                <li>Added Settings section</li>
+                <li>Added menu buttons on bottom-left tile</li>
+                <li>Added Ironsmith worker</li>
+            </ul>
+            <span><b>v0.0.16</b> - 07/02/2019</span>
+            <ul>
+                <li>Added Farmer worker</li>
+                <li>Added global upgrades (worker/building cost reduction)</li>
+                <li>Added Farmer-related upgrades</li>
+            </ul>
+            <span><b>v0.0.15</b> - 07/01/2019</span>
+            <ul>
+                <li>Added Default theme (goodbye white background)</li>
+                <li>Added several Feudal Age upgrades</li>
+                <li>Added free upgrades</li>
+                <li>Added Sawmill building</li>
+                <li>Added Stone Quarry building</li>
+                <li>Added Foundry building</li>
+            </ul>
+            <span><b>v0.0.12</b> - 06/30/2019</span>
+            <ul>
+                <li>Added Stone Age</li>
+                <li>Added Feudal Age</li>
+                <li>Added Stone resource</li>
+                <li>Added Miner worker</li>
+                <li>Added several Stone-related upgrades</li>
+            </ul>
+            <span><b>v0.0.11</b> - 06/29/2019</span>
+            <ul>
+                <li>Added Upgrades system</li>
+                <li>Added Stone resource</li>
+                <li>Modified layout to 4 tiles</li>
+                <li>Optimized progress bar animations</li>
+            </ul>
+            <span><b>v0.0.10</b> - 06/27/2019</span>
+            <ul>
+                <li>Added Lumberjack worker</li>
+                <li>Added tooltips on hover</li>
+                <li>Added modal window functionality</li>
+                <li>Added Import/Export functionality</li>
+                <li>Added button styling</li>
+                <li>Re-worked game object structure</li>
+            </ul>
+            <span><b>v0.0.08</b> - 06/16/2019</span>
+            <ul>
+                <li>Added workers to automatically gather resources</li>
+                <li>Added Water Fetcher worker</li>
+                <li>Added Wood resource</li>
+            </ul>
+            <span><b>v0.0.06</b> - 06/14/2019</span>
+            <ul>
+                <li>Added autosave feature</li>
+                <li>Added left-right layout</li>
+                <li>Finalized save system to use lzstring</li>
+            </ul>
+            <span><b>v0.0.03</b> - 06/11/2019</span>
+            <ul>
+                <li>Added Water resource</li>
+                <li>Added save system</li>
+                <li>Added pause function</li>
+                <li>Added bottom menu ribbon</li>
+            </ul>
+            <span><b>v0.0.02</b> - 06/09/2019</span>
+            <ul>
+                <li>Added Resource bar</li>
+                <li>Added Resource Progress bar</li>
+                <li>Added Resource gathering animation</li>
+                <li>Added versioning</li>
+            </ul>
+            <span><b>v0.0.01</b> - 06/08/2019</span>
+            <ul>
+                <li>Hello World!</li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./lzstring.js"></script>
+    <script text="text/javascript">
+        function updateTheme() {
+            var theme = "defaultTheme";
+            if (localStorage.getItem("theme")) {
+                theme = localStorage.getItem("theme");
+            } else {
+                var saveGame;
+                var unparsedSave;
+                try {
+                    unparsedSave = localStorage.getItem("ClickerUltisvg");
+                    if (unparsedSave === null) return;
+                    saveGame = JSON.parse(LZString.decompressFromBase64(unparsedSave));
+                }
+                catch (e) {
+                    return;
+                }
+                if (!saveGame || !saveGame.settings || !saveGame.settings.selectedTheme) return;
+                if (saveGame.settings.selectedTheme) theme = saveGame.settings.selectedTheme;
+            }
+            document.body.classList.replace("defaultTheme", theme);
+        }
+
+        updateTheme();
+        document.body.classList.remove("hide");
+    </script>
+</body>
+
+</html>

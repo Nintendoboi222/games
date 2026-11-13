@@ -1,0 +1,792 @@
+
+/* General interface tools */
+body {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#topRow {
+    height: 45vh;
+    padding-bottom: 2vh;
+}
+
+#midRow {
+    height: 45vh;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.area {
+    float: right;
+    height: 100%;
+    padding-right: 0;
+    margin-right: 15px;
+}
+
+.container {
+    display: block;
+    overflow: hidden;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.button {
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.button * {
+    pointer-events: none;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.unclickable {
+    cursor: auto;
+}
+
+.locked, .bought {
+    display: none;
+}
+
+#tooltipContainer {
+    z-index: 5;
+    width: 30vw;
+    position: absolute;
+    display: none;
+    padding: 5px;
+    border-width: 2px;
+    border-style: solid;
+    font-size: 1vw;
+}
+
+#tooltipTop {
+    text-align: center;
+    font-size: 110%;
+    font-weight: bold;
+}
+
+#tooltipMain {
+    word-break: break-word;
+}
+
+.tooltipSmaller {
+    font-size: 85%;
+}
+
+hr {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 0;
+    border-top-style: dotted;
+    border-top-width: 1px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.5vw;
+    height: 1vh;
+}
+
+/* Resource-related interface */
+#ResourcesArea {
+    width: calc(50vw - 30px);
+    overflow-y: auto;
+}
+
+.rsRow {
+    width: 100%;
+    display: inline-block;
+    line-height: 1vw;
+    font-size: 1vw;
+    padding: 0px 0px 10px;
+}
+
+.rsBlock {
+    width: calc(50% - 10px);
+    height: auto;
+    padding: 0px 5px 0px;
+    float: left;
+    text-align: center;
+}
+
+.rsIndicator {
+    height: 1.8vw;
+    font-size: 150%;
+    font-weight: bold;
+    line-height: 125%;
+    text-decoration: underline;
+}
+
+.rsIndicator span:hover {
+    cursor: pointer;
+}
+
+.rsRate {
+    height: 1.2vw;
+    font-size: 120%;
+}
+
+.rsGatherer {
+    height: calc(1.8vw - 2px);
+    font-size: 120%;
+    line-height: 150%;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.rsBar {
+    width: 100%;
+    height: calc(1.2vw - 2px);
+    line-height: 120%;
+    background-color: black;
+    border-width: 1px 0px 1px 0px;
+    border-style: solid;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.rsStockBar {
+    height: 100%;
+}
+
+.rsProgressBar {
+    height: 100%;
+}
+
+.rsAnimated {
+    transition: width 80ms linear;
+	will-change: width;
+}
+
+.rsCurrentTotal {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#CurrentWaterBar {
+    background-color: darkblue;
+}
+
+#CurrentWoodBar {
+    background-color: darkgreen;
+}
+
+#CurrentStoneBar {
+    background-color: gray;
+}
+
+#CurrentIronBar {
+    background-color: #B87333;
+}
+
+#CurrentWheatBar {
+    background-color: goldenrod;
+}
+
+#CurrentSilverBar {
+    background-color: darkgray;
+}
+
+#CurrentDiamondBar {
+    background-color: steelblue;
+}
+
+/* Jobs-related interface */
+#JobsArea {
+    width: calc(50vw - 30px);
+    overflow-y: auto;
+}
+
+.jbTitle {
+    padding-left: 5px;
+    font-size: 1.2vw;
+}
+
+.jbOutline {
+    width: 100%;
+    display: inline-block;
+}
+
+.jbOutline.locked {
+    display: none;
+}
+
+.jbBlock {
+    width: calc(20% - 10px);
+    height: auto;
+    float: left;
+    padding: 5px;
+    font-size: 1vw;
+    position: relative;
+}
+
+.jbButton {
+    position: relative;
+    width: 100%;
+    height: 3.25vw;
+    text-align: center;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+}
+
+body.ctrlDown #WorkersContainer .jbButton,
+body.ctrlDown #WorkersContainer .jbButton .jbIndicator,
+body.ctrlDown #BuildingsContainer .jbButton,
+body.ctrlDown #BuildingsContainer .jbButton .jbIndicator{
+    border-color: red;
+}
+
+.jbAge.unclickable {
+    background-color: goldenrod;
+    border: 1px solid gray;
+    color: gray;
+}
+
+.jbAge.clickable {
+    background-color: gold;
+    border: 1px solid goldenrod;
+    color: black;
+}
+
+.jbFree.clickable {
+    background-color: green;
+    border: 1px solid darkgreen;
+    color: white;
+}
+
+.jbIndicator {
+    height: calc(1.25vw - 2px);
+    line-height: calc(1.25vw - 2px);
+    border-width: 0px 0px 1px 0px;
+    border-style: dotted;
+    white-space: nowrap;
+}
+
+.upgIndicator {
+    height: 100%;
+    line-height: 3.25vw;
+    outline-style: dotted;
+    outline-offset: -5px;
+    outline-width: 1px;
+    white-space: nowrap;
+    overflow: visible;
+}
+
+.jbCurrent {
+    height: 2vw;
+    line-height: 2vw;
+}
+
+.jbBlock.achBlock {
+    width: calc(33% - 10px);
+}
+
+/* Advancement-Related Interface */
+#AdvancementsArea {
+    width: calc(50vw - 30px);
+}
+
+#AdvancementsArea hr {
+    margin-top: calc(1.2vw + 10px);
+}
+
+#AdvancementsContainer {
+    height: calc(45vh - (1.2vw + 20px));
+    overflow-y: auto;
+}
+
+.advTitle {
+    float: left;
+    padding-left: 8px;
+    font-size: 1.2vw;
+}
+
+.advPointsIndicator {
+    float: right;
+    padding-right: 8px;
+    font-size: 1.2vw;
+}
+
+.jbButton.advBought {
+    background-color: darkblue;
+    border-color: darkblue;
+    color: gold;
+}
+
+.jbButton.achButton {
+    background-color: transparent;
+}
+
+.achButton.achAchieved {
+    color: gold;
+}
+
+.jbButton.ptgBought {
+    background-color: darkblue;
+    border-color: gold;
+    border-style: dotted;
+    color: gold;
+}
+
+.jbButton.advBought .jbIndicator,
+.jbButton.ptgBought .jbIndicator {
+    border-color: gold;
+}
+
+/* Settings-Related interface */
+#MenuArea {
+    width: calc(50vw - 30px);
+    overflow: hidden;
+}
+
+#MenuSpacer {
+    width: calc(50vw - 30px);
+    padding: 1px;
+}
+
+.mnuArea {
+    height: calc(100% - 10px);
+    padding: 0px 15px 10px;
+}
+
+#MenuSelector {
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+
+.mnuButton {
+    border-style: solid;
+    border-width: 1px 2px 1px 0px;
+    height: calc(20% - 2px);
+    width: 100%;
+    font-size: 1vw;
+    line-height: 9vh;
+    overflow: hidden;
+}
+
+.mnuButton.selected {
+    height: 20%;
+    background-color: transparent !important;
+    border-width: 0px;
+    pointer-events: none;
+    line-height: calc(9vh + 2px);
+}
+
+#MenuMainPanel {
+    height: 100%;
+    width: calc(80% - 2px);
+    float: right;
+}
+
+#MenuMainPanel hr {
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.mnuTitle {
+    padding-top: 10px;
+    font-size: 1.2vw;
+    text-align: center;
+}
+
+.mnuContainer {
+    height: calc(100% - 1.5vw - 31px);
+    width: calc(100% - 2px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.mnuContentButton {
+    width:50%;
+    float:left;
+    height: 1.5vw;
+    font-size: 1vw;
+    line-height: 1.5vw;
+    border-width: 1px;
+    border-style: solid;
+    margin-bottom: 5px;
+    white-space: nowrap;
+}
+
+.mnuContentButton:hover + .mnuContentInfo {
+    background-color:rgba(255, 255, 255, 0.1);
+}
+
+.mnuContentInfo {
+    float: left;
+    padding: 1px 0px 1px 15px;
+    line-height: 1.5vw;
+    font-size: 1vw;
+    width: calc(50% - 17px);
+    white-space: nowrap;
+    margin-bottom: 5px;
+}
+
+#PrestigeContainer,
+#AchievementsContainer {
+    height: calc(100% - 3vw - 34px);
+    padding-bottom: 5px;
+}
+
+.jbBlock.ptgBlock {
+    width: calc(25% - 10px);
+}
+
+.ptgColonyButton {
+    width: calc(50% - 4px);
+    float:left;
+    height: 1.5vw;
+    font-size: 1vw;
+    line-height: 1.5vw;
+    border-width: 1px;
+    border-style: solid;
+    white-space: nowrap;
+}
+
+.ptgColonyLabel,
+.achPointsLabel {
+    float: right;
+    width:50%;
+    text-align: right;
+    font-size: 1.2vw;
+    line-height: 1.5vw;
+    padding: 1px;
+}
+
+.ptgColonyLabel div,
+.achPointsLabel div {
+    display: inline;
+}
+
+.mnuStatsLabel {
+    width:50%;
+    float:left;
+    font-size: 1vw;
+    line-height: 1.5vw;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.mnuStatsInfo {
+    float: left;
+    padding-left: 15px;
+    line-height: 1.5vw;
+    font-size: 1vw;
+    width: calc(50% - 15px);
+    white-space: nowrap;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+#MessagesContainer{
+    background-color: rgba(255,255,255,0.4);
+}
+
+.msgFontSmall .msgBlock {
+    font-size: 0.7vw;
+}
+
+.msgFontNormal .msgBlock {
+    font-size: 0.8vw;
+}
+
+.msgFontLarge .msgBlock {
+    font-size: 0.9vw;
+}
+
+.msgFontLarger .msgBlock {
+    font-size: 1vw;
+}
+
+.msgFontHuge .msgBlock {
+    font-size: 1.2vw;
+}
+
+.msgBlock {
+    margin: 0px;
+    padding: 5px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+
+.msgBlock.msgWarning {
+    font-weight: bold;
+    border-right: 15px solid;
+    border-right-color: rgba(139, 0, 0, 0.6);
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.msgBlock.msgSave {
+    font-weight: bold;
+    border-right: 15px solid;
+    border-right-color: rgba(0, 100, 0, 0.6);
+    background: rgba(0, 255, 0, 0.1);
+}
+
+.msgBlock.msgTutorial {
+    border-right: 15px solid;
+    border-right-color: rgba(184, 134, 11, 0.6);
+    background: rgba(255, 255, 0, 0.1);
+}
+
+#mnuMessagesLabel {
+    float: left;
+    padding-left: calc(10% + 5px);
+    width: calc(80% - 10px);
+}
+
+#mnuUnreadMessages {
+    float: right;
+    width: 10%;
+    padding-right: 5px;
+    text-align: center;
+    font-size: 75%;
+}
+
+/* Button bar at the bottom */
+#bottomRibbon {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5vh;
+    line-height: 5vh;
+    font-size: 1vw;
+}
+
+.ribbonButton {
+    float: left;
+    border-width: 2px 1px 0px 1px;
+    border-style: solid;
+    height: 100%;
+    width: calc(10% - 2px);
+}
+
+#autosaveButton.autosaveON {
+    background-color: green;
+}
+
+#autosaveButton.autosaveON:active {
+    background-color: mediumseagreen;
+}
+
+#versionButton {
+    font-style: italic;
+}
+
+#pauseButton.pauseON {
+    font-weight: bold;
+}
+
+#pauseButton.pauseON:active {
+    background-color: lightcoral;
+}
+
+/* Modal windows */
+#bgDisable {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#bgDisable.menuAllowed {
+    height: calc(100% - 5vh);
+}
+
+.mdHide {
+    display: none;
+}
+
+.mdShow {
+    display: block;
+}
+
+.mdButton {
+    float: left;
+    height: 1vw;
+    line-height: 1vw;
+    width: unset;
+    padding: 5px;
+    border-width: 2px;
+    border-style: solid;
+    margin-right: 10px;
+}
+
+.mdRed {
+    color: white;
+    background-color: red;
+}
+
+.mdRed:active {
+    background-color: lightcoral;
+}
+
+.mdGreen {
+    background-color: green;
+}
+
+.mdGreen:active {
+    background-color: lightgreen;
+}
+
+.mdGray {
+    background-color: lightgray;
+}
+
+.mdGray:active {
+    background-color: silver;
+}
+
+.mdTextArea {
+    resize: none;
+    width: calc(30vw - 5px);
+    height: 20vh;
+    font-size: 1vw;
+}
+
+#achievementPill {
+    position: fixed;
+    background-color: black;
+    color: white;
+    left: 50%;
+    bottom: 10%;
+    line-height: 1vw;
+    font-size: 1vw;
+    white-space: nowrap;
+    transform: translate(-50%, 0);
+    text-align: center;
+    padding: 10px;
+    box-shadow: 4px 4px 5px 0px #1f1f1f;
+    padding-left: 4vw;
+    border: 1px solid #333333;
+    border-radius: 2.5vw 10px 10px 2.5vw;
+    padding-right: 1vw;
+}
+
+#achievementPill span {
+    display: block;
+    height: 1vw;
+}
+
+#achievementPill .left {
+    width: 2.5vw;
+    height: 2.5vw;
+    position: fixed;
+    left: 0.5vw;
+    top: 2vh;
+    border-radius: 100%;
+    border: 2px dotted gold;
+}
+
+#achPoints {
+    line-height: 2vw;
+    font-size: 2vw;
+    padding-top: 0.25vw;
+}
+
+#achIndicator {
+    margin-bottom: 2vh;
+    padding-bottom: 1vh;
+    border-bottom: 2px dotted gold;
+    color: gold;
+}
+
+#achLabel {
+    font-size: 0.9vw;
+}
+
+/* Fancy Graphics Setting */
+.fancy .container,
+.fancy .button,
+.fancy .rsBar,
+.fancy .rsStockBar,
+.fancy .rsProgressBar {
+    border-radius: 4px;
+}
+
+.fancy .button.mnuButton,
+.fancy .button.ribbonButton {
+    border-radius: 0px;
+}
+
+.fancy .mnuTitle,
+.fancy .advTitle {
+    text-shadow: 5px 5px 5px rgb(0 0 0 / 50%);
+}
+
+.fancy .rsIndicator {
+    text-shadow: 0px 0px 15px rgb(0 0 0);
+}
+
+.fancy #CurrentIronBar {
+    box-shadow: inset 0px 2px 10px rgb(0 0 0 / 30%);
+}
+
+.fancy #CurrentSilverBar,
+.fancy #CurrentDiamondBar {
+    box-shadow: inset 0px 2px 10px rgb(255 255 255 / 30%);
+}
+
+.fancy .ttContainer {
+    box-shadow: 8px 8px 10px rgb(0 0 0 / 30%);
+}
+
+.fancy .jbButton,
+.fancy .rsGatherer,
+.fancy .mnuContentButton,
+.fancy .mnuButton {
+    box-shadow: inset 5px 5px 10px rgb(255 255 255 / 15%),
+                inset -5px -5px 10px rgb(0 0 0 / 15%);
+}
+
+.fancy .jbButton.clickable:active,
+.fancy .rsGatherer.clickable:active,
+.fancy .mnuContentButton.clickable:active,
+.fancy .mnuButton.clickable:active {
+    box-shadow: inset 5px 5px 10px rgb(0 0 0 / 15%),
+                inset -5px -5px 10px rgb(255 255 255 / 15%);
+}
+
+.fancy .mnuButton.selected {
+    box-shadow: none;
+}
+
+.fancy .ribbonButton {
+    box-shadow: inset 0px 5px 5px 5px rgb(255 255 255 / 10%),
+                inset 0px -5px 5px 5px rgb(0 0 0 / 10%);
+}
+
+.fancy .ribbonButton:active {
+    box-shadow: inset 0px 5px 5px 5px rgb(0 0 0 / 10%),
+                inset 0px -5px 5px 5px rgb(255 255 255 / 10%);
+}
+
+/* Browser compatibility fixes */
+.button,
+.mnuTitle,
+.rsBlock,
+.jbTitle,
+.advTitle,
+.advPointsIndicator,
+#achievementPill {
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}

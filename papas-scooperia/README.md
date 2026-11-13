@@ -1,1 +1,0 @@
-# chicken.the.sandwich.also.idk.bye.papas.scoop.github.io

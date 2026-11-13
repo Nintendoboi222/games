@@ -130,6 +130,9 @@
 |🟡| 1v1 lol 
 |🟢| 2 Minute Football
 |🟢| 2048  
+|🟢| Clicker Ultimate
+|🟢| HexGL
+|🟢| Super Star Car
 
 
 

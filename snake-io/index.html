@@ -15,11 +15,9 @@
 	<meta name="mobile-web-app-capable" content="yes">
 	<link rel="shortcut icon" sizes="256x256" href="icon-256.png">
 	  <style>
-        body,html{margin:0 auto;padding:0 auto;width:100%;height:100%;overflow:hidden}#adsbox{position:fixed;top:0;right:0;bottom:0;left:0;z-index:999;display:none;}
+        body,html{margin:0 auto;padding:0 auto;width:100%;height:100%;overflow:hidden}
     </style>
 
-   <script src="//gamessumo.com/jquery-2.1.1.min.js"></script>
-    <script src="https://yandex.ru/games/sdk/v2"></script>
     
 
     <!-- All margins and padding must be zero for the canvas to fill the screen. -->
@@ -61,21 +59,13 @@ html, body, canvas {
 	
 </head> 
  
-<body> 
-	<div id="fb-root"></div>
+<body>
 	
 	<script>
 
  function On_GameLoaded()
   {
     isGameLoaded = true;
-  }
-  
-	  function Show_Ads()
-  {
-    c2_callFunction("On_GameResumed");
-    showad1();
-
   }
 
 	// Issue a warning if trying to preview an exported project on disk.
@@ -165,63 +155,7 @@ html, body, canvas {
 		};
     </script>
 
-
-
-
-     <div id="adsbox" style="display: block;"></div>
-      <script type="text/javascript">
-         $("#adsbox").click(function () {
-             ShowYaBanner();
-             $('#adsbox').hide();
-         });
-         setTimeout(function(){  $('#adsbox').show(); }, 1000);
-         
-         window.setInterval(function(){
-             $('#adsbox').show();
-         }, 60000);
-      </script>
-
-      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-81855592-1"></script>
-      <script>
-         window.dataLayer = window.dataLayer || [];
-         function gtag(){dataLayer.push(arguments);}
-         gtag('js', new Date());
-         gtag('config', 'UA-81855592-1');  
-         
-         if (YaGames) 
-         {
-           YaGames.init(
-           {
-             screen: 
-             { 
-                 fullscreen: false
-             },
-             yandexApp: {
-                   enabled: true
-               },
-             adv: 
-             {
-                   onAdvClose: wasShown => 
-                   {
-                       //cr_setSuspended(false);
-                   }
-               }
-           }).then(function (ysdk) 
-           {
-             window.ysdk = ysdk;
-           });
-         }
-         
-         function ShowYaBanner() {
-         try 
-           {
-             ysdk.adv.showFullscreenAdv(
-             {
-              
-             });
-           }
-           catch(err) { } 
-         }
-      </script>
+      
+      
 </body> 
 </html> 

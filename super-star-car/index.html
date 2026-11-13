@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Super Star Car</title>
+  <style>
+    html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; }
+    #gameContainer { width: 100%; height: 100%; }
+    #gameContainer canvas { width: 100%; height: 100%; display: block; }
+    #loading { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #fff; font: 16px sans-serif; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <div id="gameContainer"></div>
+  <div id="loading">Loading 0%</div>
+  <script src="poki-sdk.js"></script>
+  <script>
+    // Bridge the game's Poki calls to the offline stub (same shape as Poki's own Unity loader).
+    window.initPokiBridge = function (obj) {
+      if (!window.unityGame) { setTimeout(function () { window.initPokiBridge(obj); }, 100); return; }
+      window.commercialBreak = function () {
+        PokiSDK.commercialBreak().then(function () { window.unityGame.SendMessage(obj, "commercialBreakCompleted"); });
+      };
+      window.rewardedBreak = function () {
+        PokiSDK.rewardedBreak().then(function (r) { window.unityGame.SendMessage(obj, "rewardedBreakCompleted", String(r)); });
+      };
+      window.shareableURL = function () {
+        window.unityGame.SendMessage(obj, "shareableURLResolved", location.href);
+      };
+      window.unityGame.SendMessage(obj, "ready");
+    };
+  </script>
+  <script src="UnityLoader.2019.2.js"></script>
+  <script>
+    var loading = document.getElementById("loading");
+    var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Build.json", {
+      onProgress: function (inst, p) {
+        loading.textContent = "Loading " + Math.round(p * 100) + "%";
+        if (p >= 1) loading.remove();
+      }
+    });
+    window.unityGame = gameInstance;
+  </script>
+</body>
+</html>

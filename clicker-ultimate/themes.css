@@ -1,0 +1,370 @@
+/* UI Themes */
+
+/* Default Theme */
+/* https://www.color-hex.com/color-palette/12836 */
+body.defaultTheme {
+    --color1: #000e24; /* Background */
+    --color1Alt: #000e24; /* Messages */
+    --color2: #1b2c45; /* Container Background */
+    --color2Contrast: gray; /* Resource Indicator Hover */
+    --color3: #708090; /* Menu Buttons */
+    --color3Dark: #5d6a77; /* Menu Button Active */
+    --color4: #aebec5; /* Container Border */
+    --color4Alt: #aebec5; /* Resource Rate */
+    --color5: #f7fdff; /* Titles, Indicators, hr */
+
+    --enabled: black; /* clickable button text */
+    --disabled: gray; /* unclickable button text */
+    --clicked: silver; /* clicked button */
+    --tooltip: lightgray; /* Tooltip Background */
+    --tooltipText: black; /* Tooltip Text */
+    --tooltipContrast: darkblue; /* Smaller text in tooltip */
+    --tooltipBorder: black; /* Tooltip Border */
+    --buttons: lightgray; /* Various Buttons Background */
+    --buttonsBorder: black; /* Various Buttons Borders */
+    --ribbon: gray; /* Ribbon Background */
+    --ribbonClicked: silver; /* Ribbon clicked */
+    --ribbonDisabled: darkgray; /* Ribbon Disabled */
+    --progressBar: #e60000; /* Progress Bar */
+}
+
+/* Night Theme */
+/* https://www.color-hex.com/color-palette/80072 */
+body.nightTheme {
+    --color1: #24080b;
+    --color1Alt: #24080b;
+    --color2: #131930;
+    --color2Contrast: white;
+    --color3: #383851;
+    --color3Dark: #2a2a3b;
+    --color4: #383851;
+    --color4Alt: #8595bf;
+    --color5: #8595bf;
+
+    --enabled: white;
+    --disabled: gray;
+    --clicked: #8595bf;
+    --tooltip: #131930;
+    --tooltipText: white;
+    --tooltipContrast: darkgoldenrod;
+    --tooltipBorder: white;
+    --buttons: #383851;
+    --buttonsBorder: #8595bf;
+    --ribbon: #131930;
+    --ribbonClicked: #383851;
+    --ribbonDisabled: #24080b;
+    --progressBar: #e60000;
+}
+
+/* Crimson Theme */
+/* https://www.color-hex.com/color-palette/78993 */
+body.crimsonTheme {
+    --color1: #980000;
+    --color1Alt: #980000;
+    --color2: #292929;
+    --color2Contrast: #c50303;
+    --color3: #0b0000;
+    --color3Dark: #141414;
+    --color4: #0b0000;
+    --color4Alt: gray;
+    --color5: #eae6e6;
+
+    --enabled: #570000;
+    --disabled: gray;
+    --clicked: silver;
+    --tooltip: #B3B3B3;
+    --tooltipText: black;
+    --tooltipContrast: darkblue;
+    --tooltipBorder: black;
+    --buttons: #B3B3B3;
+    --buttonsBorder: #292929;
+    --ribbon: gray;
+    --ribbonClicked: silver;
+    --ribbonDisabled: darkgray;
+    --progressBar: #c50303;
+}
+
+/* Turtle Theme */
+/* https://www.color-hex.com/color-palette/79073 */
+body.turtleTheme {
+    --color1: #1c274f;
+    --color1Alt: #1c274f;
+    --color2: #173d41;
+    --color2Contrast: crimson;
+    --color3: #14432c;
+    --color3Dark: #0d2c1d;
+    --color4: #2b5c1a;
+    --color4Alt: #46a439;
+    --color5: #46a439;
+
+    --enabled: #46a439;
+    --disabled: gray;
+    --clicked: #173d41;
+    --tooltip: #1c274f;
+    --tooltipText: #46a439;
+    --tooltipContrast: crimson;
+    --tooltipBorder: white;
+    --buttons: #1c274f;
+    --buttonsBorder: black;
+    --ribbon: #14432c;
+    --ribbonClicked: #2b5c1a;
+    --ribbonDisabled: #173d41;
+    --progressBar: #e60000;
+}
+
+/* Lightning Strike Theme */
+/* https://www.color-hex.com/color-palette/80549 */
+body.strikingTheme {
+    --color1: #1e3932;
+    --color1Alt: #1e3932;
+    --color2: #663731;
+    --color2Contrast: #1e3932;
+    --color3: #1e3932;
+    --color3Dark: black;
+    --color4: #f0b073;
+    --color4Alt: #f0b073;
+    --color5: #ffeb3e;
+    
+    --enabled: #1e3932;
+    --disabled: gray;
+    --clicked: silver;
+    --tooltip: lightgray;
+    --tooltipText: black;
+    --tooltipContrast: darkblue;
+    --tooltipBorder: black;
+    --buttons: lightgray;
+    --buttonsBorder: black;
+    --ribbon: gray;
+    --ribbonClicked: silver;
+    --ribbonDisabled: darkgray;
+    --progressBar: #c99260;
+}
+
+/* Indigo Rush Theme */
+/* https://www.color-hex.com/color-palette/35377 */
+body.indigoTheme {
+    --color1: #4a0082;
+    --color1Alt: #4a0082;
+    --color2: #5d478b;
+    --color2Contrast: lightblue;
+    --color3: #3d59ab;
+    --color3Dark: #354c92;
+    --color4: #3a5fcd;
+    --color4Alt: black;
+    --color5: antiquewhite;
+
+    --enabled: black;
+    --disabled: gray;
+    --clicked: silver;
+    --tooltip: lightgray;
+    --tooltipText: black;
+    --tooltipContrast: #4a0082;
+    --tooltipBorder: #3a5fcd;
+    --buttons: lightgray;
+    --buttonsBorder: black;
+    --ribbon: #5d478b;
+    --ribbonClicked: #49386e;
+    --ribbonDisabled: #4a0082;
+    --progressBar: #3d59ab;
+}
+
+/* Arctic Theme */
+/* https://www.color-hex.com/color-palette/83119 */
+body.arcticTheme {
+    --color1: #333333;
+    --color1Alt: #333333;
+    --color2: #444444;
+    --color2Contrast: #00c8f8;
+    --color3: #444444;
+    --color3Dark: #333333;
+    --color4: #00c8f8;
+    --color4Alt: #eeeeee;
+    --color5: #00b2dd;
+
+    --enabled: black;
+    --disabled: gray;
+    --clicked: silver;
+    --tooltip: lightgray;
+    --tooltipText: black;
+    --tooltipContrast: #00b2dd;
+    --tooltipBorder: #00c8f8;
+    --buttons: lightgray;
+    --buttonsBorder: #00c8f8;
+    --ribbon: #444444;
+    --ribbonClicked: silver;
+    --ribbonDisabled: black;
+    --progressBar: #00b2dd;
+}
+
+/* Victory Theme */
+body.victoryTheme {
+    --color1: #AF1E2D;
+    --color1Alt: white;
+    --color2: #192168;
+    --color2Contrast: #AF1E2D;
+    --color3: #192168;
+    --color3Dark: #12184d;
+    --color4: white;
+    --color4Alt: white;
+    --color5: white;
+
+    --enabled: black;
+    --disabled: gray;
+    --clicked: silver;
+    --tooltip: white;
+    --tooltipText: #192168;
+    --tooltipContrast: #AF1E2D;
+    --tooltipBorder: #AF1E2D;
+    --buttons: lightgray;
+    --buttonsBorder: white;
+    --ribbon: #192168;
+    --ribbonClicked: #12184d;
+    --ribbonDisabled: gray;
+    --progressBar: #AF1E2D;
+}
+
+body {
+    background-color: var(--color1);
+}
+
+.container,
+.vrContent {
+    background-color: var(--color2);
+    border-color: var(--color4);
+}
+
+.rsBar {
+    border-color: var(--color2);
+}
+
+.rsRate {
+    color: var(--color4Alt);
+}
+
+.rsIndicator,
+.jbTitle,
+.advTitle,
+.advPointsIndicator,
+.mnuButton,
+.mnuTitle,
+.mnuContentInfo,
+.mnuStatsLabel,
+.mnuStatsInfo,
+.ptgColonyLabel,
+.achPointsLabel,
+.vrTitle,
+.vrContent {
+    color: var(--color5);
+}
+
+.rsIndicator span:hover {
+    color: var(--color2Contrast);
+}
+
+.mnuButton {
+    background-color: var(--color3);
+    border-color: var(--color5);
+}
+
+.mnuButton:active {
+    background-color: var(--color3Dark);
+}
+
+.unclickable {
+    color: var(--disabled);
+}
+
+.clickable {
+    color: var(--enabled);
+}
+
+.clickable:active {
+    background-color: var(--clicked);
+}
+
+#tooltipContainer {
+    background: var(--tooltip);
+    border-color: var(--tooltipBorder);
+    color: var(--tooltipText);
+}
+
+.tooltipSmaller {
+    color: var(--tooltipContrast);
+}
+
+.mdButton {
+    color: var(--tooltipBorder);
+    border-color: var(--tooltipBorder);
+}
+
+hr {
+    border-top-color: var(--color5);
+}
+
+.rsGatherer,
+.jbButton,
+.mnuContentButton,
+.ptgColonyButton {
+    background-color: var(--buttons);
+    border-color: var(--buttonsBorder);
+}
+
+body.ctrlDown #WorkersContainer .jbButton,
+body.ctrlDown #WorkersContainer .jbButton .jbIndicator,
+body.ctrlDown #BuildingsContainer .jbButton,
+body.ctrlDown #BuildingsContainer .jbButton .jbIndicator{
+    color: var(--enabled);
+}
+
+.ptgInProgress .jbIndicator {
+    color: var(--enabled);
+}
+
+.jbIndicator {
+    border-color: var(--buttonsBorder);
+}
+
+.ribbonButton {
+    background-color: var(--ribbon);
+    border-color: var(--buttonsBorder);
+    color: var(--color5);
+}
+
+.ribbonButton:active,
+#autosaveButton.autosaveOFF:active {
+    background-color: var(--ribbonClicked);
+}
+
+#autosaveButton.autosaveOFF {
+    background-color: var(--ribbonDisabled);
+    color: var(--buttonsBorder);
+}
+
+.rsProgressBar {
+    background-color: var(--progressBar);
+}
+
+.mdTextArea {
+    background-color: var(--color5);
+}
+
+.msgBlock {
+    color: var(--color1Alt);
+    border-color: var(--color5);
+}
+
+#mnuUnreadMessages {
+    background-color: var(--color3Dark);
+}
+
+#pauseButton.pauseON {
+    background-color: var(--progressBar);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555555;
+}

@@ -77,6 +77,9 @@
 - **Volley Random** – [RHM Interactive, 2020](https://www.crazygames.com/game/volley-random)  
 - **Wheely Series** – [Pegas Games, 2014 onward](https://www.crazygames.com/game/wheely)
 - **2 Minute Football** – [igamebank, time not avalable]([https://www.crazygames.com/game/wheely](https://poki.com/en/g/2-minute-football))
+- **Clicker Ultimate** – [Sam, GPL-3.0](https://github.com/clickerultimate/clickerultimate.github.io)
+- **HexGL** – [Thibaut Despoulain (BKcore), MIT](https://github.com/BKcore/HexGL)
+- **Super Star Car** – [Poki](https://poki.com/en/g/super-star-car)
 - **Unlisted Games** - I *and future partners* do not take credit for the games in this website, they are not created or made by us
 
   ###### *pls dont sue me 🥺*

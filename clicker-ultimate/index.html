@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 
+    Clicker Ultimate
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.  -->
+
+    <title>Clicker Ultimate</title>
+    <meta property="og:type" content="game">
+    <meta property="og:url" content="https://clickerultimate.github.io">
+    <meta property="og:title" content="Clicker Ultimate">
+    <meta property="og:description" content="The Ultimate Clicker Game">
+    <meta property="og:author" content="Sam">
+    <meta name="description" content="The Ultimate Clicker Game">
+    <meta name="keywords" content="Clicker, Ultimate, clickerultimate, Idle, Browser, Game">
+    <meta name="author" content="Sam">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BASE URL <base href="url" target="_blank"> -->
+
+    <link rel="stylesheet" href="./interface.css">
+    <link rel="stylesheet" href="./themes.css">
+    <link rel="icon" href="./favicon.ico">
+
+    <script type="text/javascript" src="./lzstring.js" defer></script>
+    <script type="text/javascript" src="./init.js" defer></script>
+    <script type="text/javascript" src="./utils.js" defer></script>
+    <script type="text/javascript" src="./main.js" defer></script>
+</head>
+
+<body class="defaultTheme locked">
+    <div id="topRow">
+        <div id="JobsArea" class="area container">
+            <div id="WorkersTitle" class="jbTitle locked">Workers</div>
+            <div id="WorkersContainer" class="jbOutline locked">
+                <!-- Insert workers here -->
+            </div>
+            <div id="BuildingsTitle" class="jbTitle locked">Buildings</div>
+            <div id="BuildingsContainer" class="jbOutline locked">
+                <!-- Insert buildings here -->
+            </div>
+            <div id="UpgradesTitle" class="jbTitle">Upgrades</div>
+            <div id="UpgradesContainer" class="jbOutline locked">
+                <!-- Insert upgrades here -->
+            </div>
+            <div id="TradesTitle" class="locked">
+                <hr />
+                <div class="advTitle">Commerce</div>
+                <div class="advPointsIndicator">
+                    <span>Current Gold:</span>
+                    <span id="TradesGoldIndicator">0</span>
+                </div>
+            </div>
+            <div id="TradesContainer" class="jbOutline locked">
+                <!-- Insert trades here -->
+            </div>
+            <div id="LeadersTitle" class="jbTitle locked">Leaders</div>
+            <div id="LeadersContainer" class="jbOutline locked">
+                <!-- Insert leaders here -->
+            </div>
+        </div>
+        <div id="ResourcesArea" class="area container locked">
+            <div id="ResourcesContainer" class="rsRow">
+                <!-- Insert resources here -->
+            </div>
+        </div>
+    </div>
+    <div id="midRow">
+        <div id="AdvancementsArea" class="area container locked">
+            <div class="advTitle">Advancements</div>
+            <div class="advPointsIndicator">
+                <span id="AdvancementsPoints">0 Point Available</span>
+            </div>
+            <hr />
+            <div id="AdvancementsContainer">
+                <!-- Insert advancements here -->
+            </div>
+        </div>
+        <div id="MenuSpacer" class="area"></div>
+        <div id="MenuArea" class="area container locked">
+            <div id="MenuSelector">
+                <!-- menu buttons -->
+                <div id="mnuMessagesButton" class="mnuButton button" onclick="switchMenu('messages')">
+                    <div id="mnuMessagesLabel">Messages</div>
+                    <div id="mnuUnreadMessages"></div>
+                </div>
+                <div id="mnuStatisticsButton" class="mnuButton button" onclick="switchMenu('statistics')">
+                    <span>Statistics</span>
+                </div>
+                <div id="mnuAchievementsButton" class="mnuButton button" onclick="switchMenu('achievements')">
+                    <span>Achievements</span>
+                </div>
+                <div id="mnuPrestigeButton" class="mnuButton button" onclick="switchMenu('prestige')">
+                    <span id="mnuPrestigeLabel">???</span>
+                </div>
+                <div id="mnuSettingsButton" class="mnuButton button" onclick="switchMenu('settings')">
+                    <span>Settings</span>
+                </div>
+            </div>
+            <div id="MenuMainPanel">
+                <div id="MessagesArea" class="mnuArea locked">
+                    <div class="mnuTitle">Messages</div>
+                    <hr />
+                    <div id="MessagesContainer" class="mnuContainer msgFontNormal">
+                        <!-- Insert messages here -->
+                    </div>
+                </div>
+                <div id="StatisticsArea" class="mnuArea locked">
+                    <div class="mnuTitle">Statistics</div>
+                    <hr />
+                    <div id="StatisticsContainer" class="mnuContainer">
+                        <!-- Insert statistics here -->
+                        <div id="mnuStatsLabelName" class="mnuStatsLabel">Realm Name:</div>
+                        <div id="mnuStatsCurrentName" class="mnuStatsInfo">-</div>
+                        <div id="mnuStatsLabelAge" class="mnuStatsLabel locked">Age:</div>
+                        <div id="mnuStatsCurrentAge" class="mnuStatsInfo locked">-</div>
+                        <div id="mnuStatsLabelColony" class="mnuStatsLabel locked">Colonies Started:</div>
+                        <div id="mnuStatsColony" class="mnuStatsInfo locked">0</div>
+                        <div class="mnuStatsLabel">Clicks:</div>
+                        <div id="mnuStatsCurrentClicks" class="mnuStatsInfo">0</div>
+                        <div id="mnuStatsLabelWorkers" class="mnuStatsLabel locked">Workers:</div>
+                        <div id="mnuStatsCurrentWorkers" class="mnuStatsInfo locked">0</div>
+                        <div id="mnuStatsLabelBuildings" class="mnuStatsLabel locked">Buildings:</div>
+                        <div id="mnuStatsCurrentBuildings" class="mnuStatsInfo locked">0</div>
+                        <div id="mnuStatsLabelTrades" class="mnuStatsLabel locked">Trades Done:</div>
+                        <div id="mnuStatsCurrentTrades" class="mnuStatsInfo locked">0</div>
+                        <div class="mnuStatsLabel">Upgrades Bought:</div>
+                        <div id="mnuStatsCurrentUpgrades" class="mnuStatsInfo">0</div>
+                        <div id="mnuStatsLabelLeaders" class="mnuStatsLabel locked">Leaders Hired:</div>
+                        <div id="mnuStatsCurrentLeaders" class="mnuStatsInfo locked">0 / 1</div>
+                        <div id="mnuStatsLabelAdvancements" class="mnuStatsLabel locked">Advancements Bought:</div>
+                        <div id="mnuStatsCurrentAdvancements" class="mnuStatsInfo locked">0</div>
+                        <div id="mnuStatsLabelPrestiges" class="mnuStatsLabel locked">Prestige Skills Bought:</div>
+                        <div id="mnuStatsCurrentPrestiges" class="mnuStatsInfo locked">0</div>
+                        <div id="mnuStatsLabelAchievements" class="mnuStatsLabel locked">Achievements Unlocked:</div>
+                        <div id="mnuStatsCurrentAchievements" class="mnuStatsInfo locked">0</div>
+                        <div class="mnuStatsLabel">Base Click Power:</div>
+                        <div id="mnuStatsCurrentClickPower" class="mnuStatsInfo">1</div>
+                        <div class="mnuStatsLabel">Progress Completion Multiplier:</div>
+                        <div id="mnuStatsCurrentParentValue" class="mnuStatsInfo">100%</div>
+                        <div id="mnuStatsLabelWorkerCost" class="mnuStatsLabel locked">Worker Cost Multiplier:</div>
+                        <div id="mnuStatsCurrentWorkerCost" class="mnuStatsInfo locked">100%</div>
+                        <div id="mnuStatsLabelBuildingCost" class="mnuStatsLabel locked">Building Cost Multiplier:</div>
+                        <div id="mnuStatsCurrentBuildingCost" class="mnuStatsInfo locked">100%</div>
+                        <div class="mnuStatsLabel">Upgrade Cost Multiplier:</div>
+                        <div id="mnuStatsCurrentUpgradeCost" class="mnuStatsInfo">100%</div>
+                    </div>
+                </div>
+                <div id="AchievementsArea" class="mnuArea locked">
+                    <div class="mnuTitle">Achievements</div>
+                    <hr />
+                    <div id="AchievementsContainer" class="mnuContainer">
+                        <!-- Insert achievements here -->
+                    </div>
+                    <div class="achPointsLabel">Current Achievement Points: <div id="achCurrentPoints">0</div>
+                    </div>
+                </div>
+                <div id="PrestigeArea" class="mnuArea locked">
+                    <div class="mnuTitle">Prestige</div>
+                    <hr />
+                    <div id="PrestigeContainer" class="mnuContainer">
+                        <!-- Insert prestiges here -->
+                        <div class="jbTitle">Active Master</div>
+                        <div id="PrestigeActiveContainer" class="jbOutline">
+                            <!-- Insert active prestiges here -->
+                        </div>
+                        <div class="jbTitle">Passive Thinker</div>
+                        <div id="PrestigePassiveContainer" class="jbOutline">
+                            <!-- Insert passive prestiges here -->
+                        </div>
+                        <div class="jbTitle">Variety Expert</div>
+                        <div id="PrestigeOtherContainer" class="jbOutline">
+                            <!-- Insert other prestiges here -->
+                        </div>
+                    </div>
+                    <div id="PrestigeResetButton" class="ptgColonyButton button clickable locked"
+                        onclick="tooltip('colony')">Start a Colony</div>
+                    <div class="ptgColonyLabel">Current Prestige Points: <div id="PrestigeCurrentPoints">0 (0)</div>
+                    </div>
+                </div>
+                <div id="SettingsArea" class="mnuArea locked">
+                    <div class="mnuTitle">Settings</div>
+                    <hr />
+                    <div id="SettingsContainer" class="mnuContainer">
+                        <!-- Insert settings here -->
+                        <div class="mnuContentButton button clickable" onclick="toggleTutorial()">
+                            Toggle Tutorial Tips</div>
+                        <div class="mnuContentInfo">Tutorial: <span id="mnuCurrentTutorial">Enabled</span></div>
+                        <div class="mnuContentButton button clickable" onclick="toggleGreeting()">
+                            Change Greeting</div>
+                        <div class="mnuContentInfo">Current Greeting: <span id="mnuCurrentLatestChanges">Latest
+                                Changes</span></div>
+                        <div class="mnuContentButton button clickable" onclick="toggleRoundNumberSetting()">
+                            Toggle Resource Bar Rounding</div>
+                        <div class="mnuContentInfo">Currently Rounding: <span id="mnuCurrentRounding">Yes</span>
+                        </div>
+                        <div class="mnuContentButton button clickable" onclick="toggleDecimalPlacesSetting()">
+                            Change Resource Rate Decimals</div>
+                        <div class="mnuContentInfo">Decimal Places: <span id="mnuCurrentDecimals">2</span></div>
+                        <div class="mnuContentButton button clickable" onclick="switchTheme()">Change Theme</div>
+                        <div class="mnuContentInfo">Current Theme: <span id="mnuCurrentTheme">Default (Dark)</span>
+                        </div>
+                        <div class="mnuContentButton button clickable" onclick="switchGraphics()">Change Graphics</div>
+                        <div class="mnuContentInfo">Current Graphics: <span id="mnuCurrentGraphics">Default</span>
+                        </div>
+                        <div class="mnuContentButton button clickable" onclick="toggleMsgFontSize()">
+                            Change Messages Text Size</div>
+                        <div class="mnuContentInfo">Current Size: <span id="mnuCurrentMsgSize">Normal</span></div>
+                        <div class="mnuContentButton button clickable" onclick="toggleTooltipModes()">
+                            Toggle Tooltip Modes</div>
+                        <div class="mnuContentInfo">Current Tooltips: <span
+                                id="mnuCurrentLimitedTooltip">Detailed</span></div>
+                        <div class="mnuContentButton button clickable" onclick="toggleAutoskipBeginning()">
+                            Toggle Autoskip Beginning</div>
+                        <div class="mnuContentInfo">Upon Reset: <span id="mnuCurrentAutoskipBeginning">Skip
+                                Beginning</span></div>
+                        <div class="mnuContentButton button clickable" onclick="toggleDefaultMenu()">
+                            Change Default Menu</div>
+                        <div class="mnuContentInfo">On Load: <span id="mnuCurrentDefaultMenu">Keep Last Tab</span></div>
+                        <div class="mnuContentButton button clickable" onclick="toggleDeleteSave()">
+                            Toggle Hard Reset Option</div>
+                        <div class="mnuContentInfo">Delete Save Button: <span id="mnuCurrentDeleteSave">Hidden</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bottomRibbon">
+        <div class="ribbonButton button" onclick="save()">
+            <span>Save</span>
+        </div>
+        <div id="autosaveButton" class="ribbonButton button" onclick="toggleAutosave()">
+            <span id="autosaveLabel">Autosave</span>
+        </div>
+        <div id="exportButton" class="ribbonButton button" onclick="toggleExport()">
+            <span>Export Save</span>
+        </div>
+        <div id="importButton" class="ribbonButton button" onclick="toggleImport()">
+            <span>Import Save</span>
+        </div>
+        <div id="deleteSaveButton" class="ribbonButton button">
+        </div>
+        <div class="ribbonButton button">
+            <!-- TODO: Add menu item -->
+        </div>
+        <div class="ribbonButton button">
+            <!-- TODO: Add menu item -->
+        </div>
+        <div class="ribbonButton button">
+            <!-- TODO: Add menu item -->
+        </div>
+        <div id="versionButton" class="ribbonButton button" onclick="window.open('./changelog.html', '_blank');">
+            <span id="versionLabel">v0.0.00</span>
+        </div>
+        <div id="pauseButton" class="ribbonButton button" onclick="togglePause()">
+            <span id="pauseLabel">Pause</span>
+        </div>
+    </div>
+    <div id="achievementPill" style="visibility: hidden; opacity: 0;" onclick="hideAchievement()">
+        <div class="left">
+            <span id="achPoints">0</span>
+        </div>
+        <span id="achIndicator">Achievement Unlocked</span>
+        <span id="achLabel">-</span>
+    </div>
+    <div id="tooltipContainer" class="ttContainer" style="display: none;">
+        <div id="tooltipTop"></div>
+        <hr />
+        <div id="tooltipMain"></div>
+        <hr />
+        <div id="tooltipBottom"></div>
+    </div>
+    <div id="bgDisable" class="mdHide">
+    </div>
+</body>
+
+</html>
